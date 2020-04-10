@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>布局</title>
+<link rel="stylesheet" href="https://unpkg.com/mint-ui@2.2.13/lib/style.css">
+<!-- 引入组件库 -->
+<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+<script src="https://unpkg.com/mint-ui@2.2.13/lib/index.js"></script>
+<script src="https://github.com/borishuang/kids_code/blob/master/js/common.js"></script>
+<script src="./js/jquery.min.js"></script>
+<style lang="less" scoped>
+    .view-detail {
+        background: #fff;
+        padding-bottom: 15px;
+        min-height: 100vh;
+    }
+
+    .content {
+        padding: 20px 15px 0;
+    }
+
+    h3 {
+        font-size: 25px;
+        line-height: 36px;
+    }
+     
+    .view-content {
+    padding-top: 30px;
+    overflow-x: hidden;
+    }
+</style>
+
+</head>
+<body>
+    <div id="main">
+        <mt-header fixed>
+            <div @click="history.back()" slot="left">
+                <mt-button icon="back"></mt-button>
+            </div>
+        </mt-header>
+        <div class="view-detail">
+            <div class="content">
+              <h3 class="text-break">{{article.title}}</h3>
+              <div class="view-main">
+                <div class="view-content">
+                  <div id="view-content" class="main text-break" v-html="article.content"></div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+<script>
+    var demo = new Vue({
+    	el: '#main',
+    	data: {
+            article_id: getQueryString('id'),
+    	},
+        computed: {
+            article: function() { 
+                return articles[this.article_id];
+            },
+        },
+        methods: {
+        },
+    });
+	
+</script>
+</body>
+</html>
